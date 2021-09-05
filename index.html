@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IT2810 - Project 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css"/>
+
+    <!-- SVG and documentation click handlers -->
+    <script src="script.js"></script>
+
+    <!-- JavaScript for drawing to canvas -->
+    <script src="canvas.js"></script>
+</head>
+<body>
+<div class="main-container">
+    <div>
+        <h1 class="main-header">mia abstrakta</h1>
+    </div>
+    <div class="art-container no-select">
+        <!-- SVG art built in Inkscape -->
+        <svg class="art-svg" viewBox="0 0 211.67 211.67" xmlns="http://www.w3.org/2000/svg">
+            <g id=bg-triangles class=triangle-circle fill="#01579b">
+                <path transform="matrix(.33503 0 0 .33503 27.4 -13.045)"
+                      d="m328.86 233.61h-68.298-121.21a15.276 15.276 60 0 1-13.229-22.914l94.756-164.12a15.276 15.276 2.522e-7 0 1 26.458 0l94.756 164.12a15.276 15.276 120 0 1-13.229 22.914z"/>
+                <path transform="matrix(0 -.33503 .33503 0 -13.045 184.27)"
+                      d="m328.86 233.61h-68.298-121.21a15.276 15.276 60 0 1-13.229-22.914l94.756-164.12a15.276 15.276 2.522e-7 0 1 26.458 0l94.756 164.12a15.276 15.276 120 0 1-13.229 22.914z"/>
+                <path transform="matrix(0 .33503 -.33503 0 224.71 27.4)"
+                      d="m328.86 233.61h-68.298-121.21a15.276 15.276 60 0 1-13.229-22.914l94.756-164.12a15.276 15.276 2.522e-7 0 1 26.458 0l94.756 164.12a15.276 15.276 120 0 1-13.229 22.914z"/>
+                <path transform="matrix(.33503 0 0 -.33503 27.4 224.71)"
+                      d="m328.86 233.61h-68.298-121.21a15.276 15.276 60 0 1-13.229-22.914l94.756-164.12a15.276 15.276 2.522e-7 0 1 26.458 0l94.756 164.12a15.276 15.276 120 0 1-13.229 22.914z"/>
+            </g>
+            <g id=fg-triangles class=triangle-circle fill="#0288d1">
+                <path transform="matrix(.2369 .2369 -.2369 .2369 134.49 -33.616)"
+                      d="m328.86 233.61h-68.298-121.21a15.276 15.276 60 0 1-13.229-22.914l94.756-164.12a15.276 15.276 2.522e-7 0 1 26.458 0l94.756 164.12a15.276 15.276 120 0 1-13.229 22.914z"/>
+                <path transform="matrix(.2369 -.2369 .2369 .2369 -33.629 77.305)"
+                      d="m328.86 233.61h-68.298-121.21a15.276 15.276 60 0 1-13.229-22.914l94.756-164.12a15.276 15.276 2.522e-7 0 1 26.458 0l94.756 164.12a15.276 15.276 120 0 1-13.229 22.914z"/>
+                <path transform="matrix(-.2369 .2369 -.2369 -.2369 245.41 134.5)"
+                      d="m328.86 233.61h-68.298-121.21a15.276 15.276 60 0 1-13.229-22.914l94.756-164.12a15.276 15.276 2.522e-7 0 1 26.458 0l94.756 164.12a15.276 15.276 120 0 1-13.229 22.914z"/>
+                <path transform="matrix(.2369 .2369 .2369 -.2369 -33.629 134.5)"
+                      d="m328.86 233.61h-68.298-121.21a15.276 15.276 60 0 1-13.229-22.914l94.756-164.12a15.276 15.276 2.522e-7 0 1 26.458 0l94.756 164.12a15.276 15.276 120 0 1-13.229 22.914z"/>
+            </g>
+            <circle id=center-disc class="center-disc" cx="105.83" cy="105.83" r="21.162"/>
+            <text id=svg-label class="svg-label" xml:space="preserve" x="83.295349" y="113.73091">
+                <tspan x="83.295349" y="113.73091">SVG</tspan>
+            </text>
+        </svg>
+        <div class="art-canvas-container">
+            <canvas id="art-canvas" class="art-canvas"></canvas>
+        </div>
+    </div>
+    <div class="bio-container">
+        <img class="bio-img"
+             src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Steinar_Sagen%2C_Nordiske_mediedager_2010.jpg/1200px-Steinar_Sagen%2C_Nordiske_mediedager_2010.jpg"
+             alt="Steinar E. Hagen"/>
+        <p class="bio">
+            <!--modified version of https://snl.no/Steinar_Haga_Kristensen-->
+            <b>Steinar E. Hagen</b> er en norsk billedkunstner. Han er kjent for en allsidig kunstnerisk praksis som
+            omfatter maleri, skulptur, installasjon, video, performance og scenekunst. I flere prosjekter og
+            utstillinger ser man gjerne en kombinasjon av to eller flere av disse uttrykkene i komplekse totalverk.
+            Hagens arbeid blander mytologi, teatralitet, samfunnskommentar og humor i et både surrealistisk,
+            naivistisk og heroisk bildespråk.
+        </p>
+        <a id="docs-toggle" class="docs-toggle">
+            <!-- Icon 'file-list-3' from https://remixicon.com/ -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="none" d="M0 0h24v24H0z"/>
+                <path d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/>
+            </svg>
+            <span class="docs-toggle-text">Vis dokumentasjon</span>
+        </a>
+    </div>
+
+    <div id="docs-container" class="docs-container">
+        <div id="docs" class="docs">
+            <div class="docs-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z"/>
+                    <path d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/>
+                </svg>
+                <span>Dokumentasjon</span>
+            </div>
+            <div class="docs-section">
+                <strong>Flexbox</strong>
+                <p>
+                    Benyttes hovedsakelig for å ordne de ulike elementene i rader og kolonner, og for å dynamisk
+                    tilordne plass avhengig av skjermstørrelse. For eksempel er et av de øverste elementene en kolonne
+                    bestående av overskrift, hovedinnhold, og bunntekst ("biografien"). Her tar overskrift og
+                    bunntekst akkurat så mye plass som nødvendig, mens hovedinnholdet fyller ut resten. Samtidig har
+                    hovedinnholdet et visst minimumskrav til hvor mye som tildeles
+                    (<span class="docs-highlight">min-width</span> og <span class="docs-highlight">min-height</span> i
+                    CSS), slik at dette ikke faller helt bort på visse skjermtyper.
+                </p>
+                <p>
+                    Bildekunsten (altså de to bildene) er i utgangspunktet ordnet som en rad (fra venstre til høyre) med
+                    flexbox. På smalere skjermer vil dette kreve for mye plass, og det er derfor lagt inn en regel som
+                    bytter til kolonne-ordning på skjermer som er smalere enn en viss størrelse. Dette krever kun
+                    endring av ett attributt, og viser fleksibiliteten til flexbox.
+                </p>
+                <p>
+                    Flexbox er også flittig brukt for å sentrere de ulike elementene både horisontalt og vertikalt.
+                </p>
+            </div>
+            <div class="docs-section">
+                <strong>Grid</strong>
+                <p>
+                    Denne siden benytter ikke CSS grid, da layout-behovene er tilstrekkelig dekket av flexbox. Hadde det
+                    vært snakk om en mer kompleks sideutforming, med ordning i både kolonne og rad for de samme
+                    elementene (altså et grid), kunne grid helt klart vært aktuelt for å utfylle flexbox.
+                </p>
+            </div>
+            <div class="docs-section">
+                <strong>SVG</strong>
+                <p>
+                    Det første bildet er tegnet i SVG ved hjelp av bilderedigeringsprogrammet <a
+                        href="https://inkscape.org/">Inkscape</a>. HTML-dokumentet inkluderer en forenklet "plain SVG"
+                    for å unngå unødvendig
+                    Inskcape-markup. Animasjoner er implementert i CSS. Jeg valgte å benytte <span
+                        class="docs-highlight">transitions</span> , da det så ut
+                    til å dekke behovene mine bedre og enklere enn f.eks. animasjoner med <span class="docs-highlight">@keyframes</span>.
+                </p>
+                <p>
+                    Overgangene utføres ved hjelp av stilklasser som "toggles" via jQuery. I tillegg forenkler jQuery
+                    oppkoblingen av de nødvendige klikk-lytterne som gir kunsten interaktivitet på element-nivå. Dette
+                    er jo i utgangspunktet ikke særlig vanskelig, da SVG-en fungerer som helt vanlige
+                    HTML-elementer.
+                </p>
+            </div>
+            <div class="docs-section">
+                <strong>HTML canvas</strong>
+                <p>
+                    Canvas-implementasjonen av kunstverket er i all hovedsak en etterligning av SVG-versjonen. Her har
+                    jeg altså forsøkt å gjøre de så like som mulig for å muligens avdekke de mest sentrale forskjellene.
+                </p>
+                <p>
+                    Først og fremst er canvas i all hovedsak et API til JavaScript, og i HTML-dokumentet finner en bare
+                    et nokså intetsigende <span class="docs-highlight">&lt;canvas&gt;</span>-element. For at noe som
+                    helst skal vises må det tegnes til dette element via en
+                    <span class="docs-highlight">CanvasRenderingContext2D</span>. Dette gjøres via en rekke
+                    instruksjoner som manipulerer canvaset, både for å tegne streker, men også for å rotetere og flytte
+                    på canvaset. Det har derfor krevd noe mer
+                    utregning og planlegging i forhold til SVG-byggingen i Inkscape.
+                </p>
+                <p>
+                    Det som krevde mest tid, og som tydelig viste forskjellene mellom canvas og SVG, var animasjonene.
+                    Der SVGen benytter eksisterende animasjonsstøtte i CSS, er alle canvas-animasjonene helt
+                    hjemmelagde. Siden canvas ikke egentlig lar deg manipulere elementene etter at de er tegnet, er alle
+                    bevegelsene egentlig bare en evig prosess bestående av tegning og visking. Programmet må altså for
+                    hvert bilde (frame) beregne hvor elementene skal være, i tillegg til andre attributter som størrelse
+                    og farge, basert på et gitt tidsstempel.
+                </p>
+                <p>
+                    Dette krever i sin tur en del logikk for å holde styr på
+                    starttidspunktet for animasjonene og den øyeblikkelige progresjonen til hver av dem. Siden
+                    animasjonene i CSS benytter <span class="docs-highlight">ease-in-out</span> som easing-funksjon,
+                    "måtte" jeg jo også finne frem
+                    funksjonen til en tilsvarende Bézier-kurve. Resultatet er ikke 100% likt CSS-versjonen, da de easer
+                    litt ulikt ved avbryting av animasjonene (dvs. når man trykker en andre gang før første animasjon er
+                    ferdig). For å animere fargeovergangen har jeg benyttet HSL-representasjonen, da den gjør det
+                    lettere å gå gjennom ulike kulør-verdier (hue).
+                </p>
+                <p>
+                    Uten tydelige elementer slik som i SVG kan det være mer utfordrende å implementere klikklyttere på
+                    element-nivå i canvas. Én fremgangsmåte er å selv beregne "omrissene" til de ulike figurene, og
+                    utfra klikkposisjonen bestemme hva som trykkes på. Dette gikk forholdsvis greit for disken i midten,
+                    som jo bare har en sirkel som omriss. Det virket derimot ikke like trivielt å beregne omrissene for
+                    alle trekantene, og ikke minst å sjekke dette opp mot klikkposisjon. Redningen ble funksjonen
+                    <span class="docs-highlight">isPointInPath()</span>, og søsterfunksjonen <span
+                        class="docs-highlight">isPointInStroke()</span>, fra <span class="docs-highlight">CanvasRenderingContext2D</span>.
+                    Gitt en <span class="docs-highlight">Path2D</span>
+                    beregner funksjonene om et gitt punkt er inneholdt eller ikke. Det eneste som gjenstod var å samle
+                    sammen alle pathene under tegning, slik at de var tilgjengelige ved senere klikkhåndtering.
+                </p>
+                <p>
+                    Siden canvas egentlig bare er et bilde, og ikke vektorgrafikk slik som SVG, er det viktig å
+                    spesifisere dimensjonene til "bildet" via DOM attributter (width og height) og ikke bare via CSS.
+                    Hvis ikke ender gjerne bildet opp med å se svært pikselert ut.
+                </p>
+            </div>
+            <div class="docs-section">
+                <strong>jQuery</strong>
+                <p>
+                    Som nevnt har jQuery forenklet deler av logikken, blant annet element-spørringer, klikklyttere,
+                    CSS-klasse-toggling og enkle animasjoner. For det meste, kanskje utenom sistnevnte, er dette nokså
+                    lett å implementere uten jQuery, men det har i det minste bidratt til å øke kodens lesbarhet.
+                </p>
+            </div>
+            <div class="docs-section">
+                <strong>Testing</strong>
+                <p>
+                    Siden er testet manuelt i nettleserne Firefox, Chrome og Safari. Her har utviklerverktøyene i
+                    Firefox og Chrome vært svært nyttige, spesielt for testing av ulike skjermstørrelser og
+                    mobil-visning. Siden er også testet på en faktisk mobiltelefon med Firefox. Ut ifra dette vil jeg
+                    påstå at siden har støtte for de fleste enheter.
+                </p>
+                <p>
+                    Underveis i utviklingen dukket det opp et par tilfeller hvor de ulike nettleserne krevde noe
+                    forskjellig CSS-styling, blant annet bruk av vendor prefixes i styling av .no-select (som skal
+                    hindre
+                    tekstmarkering ved interaksjon med kunsten). Her var
+                    <a href="https://caniuse.com/user-select-none">caniuse.com</a> nyttig for å finne de riktige
+                    prefixene for å dekke de fleste
+                    brukerne.
+                </p>
+            </div>
+            <div class="docs-section">
+                <strong>Informasjonskilder</strong>
+                <p>
+                    Den mest nyttige kilden til informasjon rundt de ulike teknologiene og API-ene har nok vært <a
+                        href="https://developer.mozilla.org/en-US/docs/Web">MDN Web Docs</a>. Det fleste
+                    problemstillingene rundt spesielt <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">Canvas API-et</a> fant jeg
+                    løsninger for der. Til bruk av
+                    jQuery fikk jeg god nytte av den <a href="https://api.jquery.com/">offisielle dokumentasjonen</a>.
+                    Naturlig nok fikk jeg også en del hjelp av en <a href="https://duckduckgo.com/?q=🦆">søkemotor</a>.
+                    I noen tilfeller kunne også StackOverflow presentere noen inspirerende løsninger, men jeg endte ikke
+                    opp med å benytte meg av noen av disse. Wikipedia kunne selvfølgelig informere om <a
+                        href="https://en.wikipedia.org/w/index.php?title=B%C3%A9zier_curve">Bézier-kurver</a>.
+                </p>
+            </div>
+
+            <div class="docs-section docs-attributions">
+                <strong>Attribusjoner</strong>
+                <p>Bilde: Nordiske Mediedager , Eirik Helland Urke, CC BY-SA 2.0
+                    <a href="https://creativecommons.org/licenses/by-sa/2.0">https://creativecommons.org/licenses/by-sa/2.0</a>,
+                    via Wikimedia Commons</p>
+                <p>Fiktiv biografi er en modifisert versjon av <i>Rød, Arve: Steinar Haga Kristensen i Store norske
+                    leksikon
+                    på snl.no. Hentet 1. september 2021 fra <a href="https://snl.no/Steinar_Haga_Kristensen">https://snl.no/Steinar_Haga_Kristensen</a></i>
+                </p>
+                <p>
+                    Ikonet 'file-list-3' (
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z"/>
+                        <path fill="#fff"
+                              d="M19 22H5a3 3 0 0 1-3-3V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v12h4v4a3 3 0 0 1-3 3zm-1-5v2a1 1 0 0 0 2 0v-2h-2zm-2 3V4H4v15a1 1 0 0 0 1 1h11zM6 7h8v2H6V7zm0 4h8v2H6v-2zm0 4h5v2H6v-2z"/>
+                    </svg>
+                    ) er hentet fra <a href="https://remixicon.com">https://remixicon.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+</script>
+</html>

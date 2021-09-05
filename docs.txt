@@ -1,0 +1,6 @@
+Flexbox:
+Hovedsakelig for å sentrere elementer, men også viktig for å tildele plass til de ulike komponentene.
+For eksemepel er det her satt opp slik at overskrift og "footer" ikke tar opp mer plass en nødvendig,
+mens kunsten tar opp resten av plassen (med en viss minimumverdi).
+Brukes også for å tilpasse bildene til ulike skjermstørrelser ved at bildene plasseres fra venstre til høyre på større skjermer,
+og fra topp til bunn på mindre skjermer.
